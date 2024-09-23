@@ -6,8 +6,9 @@ import random
 import json
 import logging
 
-option_a = os.getenv('OPTION_A', "Cats")
-option_b = os.getenv('OPTION_B', "Dogs")
+option_a = os.getenv('OPTION_A', "Cloud")
+option_b = os.getenv('OPTION_B', "DevOps")
+option_c = os.getenv('OPTION_C', "SRE")
 hostname = socket.gethostname()
 
 app = Flask(__name__)
@@ -40,12 +41,12 @@ def hello():
         'index.html',
         option_a=option_a,
         option_b=option_b,
+        option_c=option_c,
         hostname=hostname,
         vote=vote,
     ))
     resp.set_cookie('voter_id', voter_id)
     return resp
-
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=80, debug=True, threaded=True)
