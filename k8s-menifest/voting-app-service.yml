@@ -6,7 +6,7 @@ metadata:
     name: voting-service
 spec:
   type: LoadBalancer
-  port:
+  ports:
     - targetPort: 80
       port: 80
   selector:

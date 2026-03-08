@@ -10,13 +10,13 @@ spec:
     matchLabels:
       name: mysql-db
   template:
-    matadata:
+    metadata:
       labels:
         name: mysql-db
     spec:
       containers:
         - name: mydb
-          image: mysql
+          image: postgres
           ports:
             - containerPort: 3306
           env:
@@ -24,7 +24,7 @@ spec:
               valueFrom:
                 secretKeyRef:
                   name: postgres-secret
-                  key: POSTGRES_SECRET
+                  key: POSTGRES_PASSWORD
             - name: POSTGRES_USER
               valueFrom:
                 secretKeyRef:
