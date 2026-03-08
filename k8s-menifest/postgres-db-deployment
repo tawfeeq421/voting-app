@@ -18,7 +18,7 @@ spec:
         - name: mydb
           image: postgres
           ports:
-            - containerPort: 3306
+            - containerPort: 5432
           env:
             - name: POSTGRES_PASSWORD
               valueFrom:
