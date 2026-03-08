@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mysql-db-deploymnet
+  labels:
+    name: mysql-db
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: mysql-db
+  template:
+    matadata:
+      labels:
+        name: mysql-db
+    spec:
+      containers:
+        - name: mydb
+          image: mysql
+          ports:
+            - containerPort: 3306
+          env:
+            - name: POSTGRES_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: postgres-secret
+                  key: POSTGRES_SECRET
+            - name: POSTGRES_USER
+              valueFrom:
+                secretKeyRef:
+                  name: postgres-secret
+                  key: POSTGRES_USER
+            - name: POSTGRES_DB
+              valueFrom:
+                secretKeyRef:
+                  name: postgres-secret
+                  key: POSTGRES_DB
