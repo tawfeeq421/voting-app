@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: voting-app-deployment
+  labels:
+    name: voting-app
+    author: Tawfeeq
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      name: voting-app
+  template:
+    metadata:
+      labels:
+        name: voting-app
+    spec:
+      containers:
+        - name: voting
+          image: tawfeeq421/voteing-app
+          ports:
+            - containerPort: 80
+
